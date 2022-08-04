@@ -12,19 +12,31 @@ const AddEdit = () => {
     }
 
     const [contacts, setContacts] = useState(initialValues);
-
     const { name, mobile, email, address } = contacts;
 
 
     //function to handle input change
-    const handleInputChange = (e) => {
-        console.log('jdjdj')
+    const handleChangeInputs = (e) => {
+       let { name, value } = e.target;
+        setContacts({
+            ...contacts,
+            [name]: value
+        })
     }
 
 
     //function to submit form data
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
+        const newData = {
+            name,
+            mobile,
+            email,
+            address
+        }
+
+        console.log(newData);
     }
 
   return (
@@ -33,20 +45,20 @@ const AddEdit = () => {
             <div className='col-md-6'>
                 <form onSubmit={handleSubmit}>
                     <div className='form-group'>
-                        <label>Name</label>
-                        <input type="text" className='form-control' value={name} name='name' onChange={handleInputChange} />
+                        <label className="form-label">Name</label>
+                        <input type="text" className='form-control' value={name} name="name" onChange={handleChangeInputs} />
                     </div>
                     <div className='form-group'>
-                        <label>Mobile</label>
-                        <input type="phone" className='form-control' value={mobile} name='mobile' onChange={handleInputChange} />
+                        <label className="form-label">Mobile</label>
+                        <input type="phone" className='form-control' value={mobile} name="mobile" onChange={handleChangeInputs} />
                     </div>
                     <div className='form-group'>
-                        <label>Email</label>
-                        <input type="email" className='form-control' value={email} name='email' onChange={handleInputChange} />
+                        <label className="form-label">Email</label>
+                        <input type="email" className='form-control' value={email} name="email" onChange={handleChangeInputs} />
                     </div>
                     <div className='form-group'>
-                        <label>Address</label>
-                        <input type="text" className='form-control' value={address} name='address' onChange={handleInputChange} />
+                        <label className="form-label">Address</label>
+                        <input type="text" className='form-control' value={address} name="address" onChange={handleChangeInputs} />
                     </div>
                     <div className='mt-3'>
                         <button className='btn btn-outline-secondary'>Cancel</button>

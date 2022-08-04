@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
         <Header />
-      <div className='container'>
+      <div className='container-fluid'>
         <Routes>
           <Route path='/' element={<Dashboard />} />
           <Route path='/add' element={<AddEdit />} />
