@@ -1,13 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const ContactListsItem = ({contacts}) => {
+const ContactListsItem = ({contacts, handleonDelete}) => {
 
-  console.log(contacts);
+  
+  
   return (
     <div className='container-fluid mt-3'>
         <div className='row'>
             <div className='col-lg-12'>
-                <table className='table table-bordered table-striped'>
+            <div className="table-responsive">
+                <table className='table align-middle'>
                   <thead>
                      <tr>
                         <th scope='col'>No.</th>
@@ -29,13 +32,27 @@ const ContactListsItem = ({contacts}) => {
                             <td>{contacts[id].email}</td>
                             <td>{contacts[id].address}</td>
                             <td>
-                              delete
+                              <Link to={`/update/${contacts[id].id}`}>
+                                <span className='btn text-primary'>
+                                  <i className='fa fa-pencil-alt'></i>
+                                </span>
+                              </Link>
+
+                                <span onClick={() => handleonDelete(contacts[id].id)} className='btn text-danger'>
+                                  <i className="fa-solid fa-trash-can"></i>
+                                </span>
+
+                              <Link to={`/view/${contacts[id].id}`}>
+                                <span className='btn text-info'>
+                                <i className="fa-solid fa-eye"></i></span>
+                              </Link>
                             </td>
                         </tr>
                       )
                     })}
                   </tbody>
                 </table>
+                </div>
             </div>  
         </div>
     </div>
